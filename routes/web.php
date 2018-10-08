@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::view('/', 'index');
+
+Route::post('/calculate', ['as'=> 'CalculatePace', 'uses'=> 'FormController@calculatePace']);
+
+Route::fallback(function () {
+    // TODO(andrew) Add a fun thing here
+    return 'No view found';
 });
