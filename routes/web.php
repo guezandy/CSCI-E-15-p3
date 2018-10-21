@@ -19,3 +19,9 @@ Route::fallback(function () {
     // TODO(andrew) Add a fun thing here
     return 'No view found';
 });
+
+public function show($title = null)
+{
+    dump($title);
+    return view('books.show');
+}

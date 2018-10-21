@@ -16,9 +16,8 @@ class FormController extends Controller
 
     /**
      * Calculate the running pace needed.
-     *
-     * @param  Request  $request
-     * @param  string  $id
+     * @param  Request $request
+     * @param  string $id
      * @return Response
      */
     public function calculatePace(CalculatePaceRequest $request)
