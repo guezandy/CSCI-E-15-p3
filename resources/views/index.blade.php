@@ -12,20 +12,12 @@
                     <label for="distance">Enter distance</label>
                     <input name='distance'
                            id='distance'
-                           class="form-control @if (isset($errors) && $errors->has('distance')) is-invalid @endif"
+                           class="form-control @if ($errors->has('distance')) is-invalid @endif"
                            type='number'
                            value='{{ old('distance') }}'
                            required>
-                    @if (isset($errors))
-                        @if ($errors->first('distance'))
-                            <div class="invalid-feedback">
-                                {{$errors->first('distance')}}
-                            </div>
-                        @else
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        @endif
+                    @if(isset($errors) && $errors->has('distance'))
+                        @component('components.input-validation', ['error' => $errors->first('distance')])@endcomponent
                     @endif
                 </div>
                 <div class="col-sm-3 col-sm-offset-1 unit-radio">
@@ -36,14 +28,9 @@
                                    id="{{$unit}}"
                                    name="unit"
                                    value='{{$unit}}'
-                                   @if (old('unit'))
-                                        @if (old('unit') == $unit)
-                                            checked
-                                        @endif
-                                   @else
-                                        @if($unit == 'mile')
-                                            checked
-                                        @endif
+                                   {{-- Use default value to handle default selecting mile on first loading page --}}
+                                   @if (old('unit', 'mile') == $unit)
+                                   checked
                                    @endif
                                    required>
                             <label class="custom-control-label"
@@ -66,16 +53,8 @@
                            class="form-control @if (isset($errors) && $errors->has('hours')) is-invalid @endif "
                            value='{{ old('hours') ?? 0 }}'
                            type='number'>
-                    @if (isset($errors))
-                        @if ($errors->first('hours'))
-                            <div class="invalid-feedback">
-                                {{$errors->first('hours')}}
-                            </div>
-                        @else
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        @endif
+                    @if (isset($errors) && $errors->first('hours'))
+                        @component('components.input-validation', ['error' => $errors->first('hours')])@endcomponent
                     @endif
                 </div>
                 <div class="col-sm-6">
@@ -91,16 +70,8 @@
                             </option>
                         @endfor
                     </select>
-                    @if (isset($errors))
-                        @if ($errors->first('minutes'))
-                            <div class="invalid-feedback">
-                                {{$errors->first('minutes')}}
-                            </div>
-                        @else
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
-                        @endif
+                    @if (isset($errors) && $errors->first('minutes'))
+                        @component('components.input-validation', ['error' => $errors->first('minutes')])@endcomponent
                     @endif
                 </div>
             </div>
@@ -109,12 +80,9 @@
         @if (session('results'))
             <div class="result">
                 <div class="alert alert-primary" role="alert">
-                    Your goal pace is:
-                    {{ Session::get('results') }}
-                    {{--TODO(andrewr) Figure out why this syntax doesn't work if the docs say to do it --}}
-                    {{-- {{ session['results'] }}--}}
+                     {{ session('results') }}
                 </div>
             </div>
         @endif
-</div>
+    </div>
 @endsection

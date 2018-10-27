@@ -16,7 +16,8 @@
     <link href="/css/styles.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<div class="flex-container">
+{{-- Note: Couldn't find a nice way to get an asset via css. So just added it here. Its purely aesthetic --}}
+<div class="flex-container" style="background: url({{asset('/images/landing-background.jpg')}}); background-size: contain">
     @yield('content')
 </div>
 </body>
