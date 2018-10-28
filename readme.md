@@ -10,8 +10,18 @@
 + [Laravel populate form with old data after validation fail](https://stackoverflow.com/questions/40111684/how-to-re-populate-form-with-old-data-if-a-validation-error-occurs)
 + [Redirect back with Flash Session data](https://laravel.com/docs/5.7/redirects#redirecting-with-flashed-session-data)
 
+## 3 Unique inputs
+1. Text input for distance running
+2. Number input for goal hours
+3. Dropdown for goal minutes
+4. Radio buttons selecting kilometer or mile
+
+## Packages
++ barryvdh/laravel-debugbar
++ laravel/tinker
+
+## Notes for instructor
++ Created a custom Request class that extends Request solely to validate inputs using the guide [here](https://laravel.com/docs/5.7/validation#form-request-validation)
 
 # TODOS
 Lets add basic tests
-Fix fallback URL
-Final pass on requirements for p3
