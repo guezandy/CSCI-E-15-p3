@@ -14,6 +14,9 @@
                            id='distance'
                            class="form-control @if ($errors->has('distance')) is-invalid @endif"
                            type='number'
+                           placeholder='Enter distance...'
+                           step="0.01"
+                           min=0
                            value='{{ old('distance') }}'
                            required>
                     @if(isset($errors) && $errors->has('distance'))
@@ -51,7 +54,8 @@
                     <input name='hours'
                            id='hours'
                            class="form-control @if (isset($errors) && $errors->has('hours')) is-invalid @endif "
-                           value='{{ old('hours') ?? 0 }}'
+                           placeholder='0'
+                           value='{{ old('hours') }}'
                            type='number'>
                     @if (isset($errors) && $errors->first('hours'))
                         @component('components.input-validation', ['error' => $errors->first('hours')])@endcomponent
@@ -80,7 +84,7 @@
         @if (session('results'))
             <div class="result">
                 <div class="alert alert-primary" role="alert">
-                     {{ session('results') }}
+                    Goal pace is: {{ session('results') }}
                 </div>
             </div>
         @endif
