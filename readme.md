@@ -22,6 +22,3 @@
 
 ## Notes for instructor
 + Created a custom Request class that extends Request solely to validate inputs using the guide [here](https://laravel.com/docs/5.7/validation#form-request-validation)
-
-# TODOS
-Lets add basic tests
